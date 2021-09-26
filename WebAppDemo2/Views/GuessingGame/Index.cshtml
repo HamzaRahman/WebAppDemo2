@@ -1,0 +1,25 @@
+﻿@model WebAppDemo2.Models.GuessingGame
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Guessing Game";
+}
+<h4>Play Game</h4>
+<hr />
+<form asp-action="Index" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Number" class="control-label"></label>
+        <input asp-for="Number" class="form-control" style="width:100px"/>
+    </div>
+
+    <div>
+        <p> @HttpContextAccessor.HttpContext.Session.GetString("checkMatch")</p>
+        <p> @HttpContextAccessor.HttpContext.Session.GetString("Near")</p>
+        <p>Number of attemps @HttpContextAccessor.HttpContext.Request.Cookies["Attemps"]</p>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Check" class="btn btn-primary" />
+    </div>
+</form>
