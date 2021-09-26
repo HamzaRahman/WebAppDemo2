@@ -1,0 +1,30 @@
+﻿@model WebAppDemo2.Models.Fever
+
+@{ ViewData["Title"] = "FeverCheck"; }
+
+<h1>Fever Checker</h1>
+
+<h4>Fever</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="FeverCheck" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Temprature" class="control-label"></label>
+                <input asp-for="Temprature" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Unit" class="control-label"></label>
+                <br />
+                <input type="radio" asp-for="Unit" value="Fahrenheit" />Fahrenheit   <br />
+                <input type="radio" asp-for="Unit" value="Celsius" />Celsius
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Check" class="btn btn-primary" />
+            </div>
+        </form>
+        <b>@ViewData["Message"]</b>
+    </div>
+</div>
